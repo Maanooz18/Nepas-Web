@@ -617,7 +617,7 @@ export default function GuidelinesScreen() {
             disabled={!isOnline || isDownloadingAll}
           >
             {isDownloadingAll
-              ? `Downloading ${downloadProgress?.current} / ${downloadProgress?.total}...`
+              ? `Downloading..... ${downloadProgress?.current} / ${downloadProgress?.total}...`
               : "Download All PDFs"}
           </button>
         </div>
