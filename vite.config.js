@@ -41,16 +41,16 @@ export default defineConfig({
             type: "image/png",
           },
         ],
-        server: {
-          proxy: {
-            // Whenever our app requests /wp-content, Vite intercepts it
-            "/wp-content": {
-              target: "https://nepas.org.np",
-              changeOrigin: true,
-              secure: false,
-            },
-          },
-        },
+        // server: {
+        //   proxy: {
+        //     // Whenever our app requests /wp-content, Vite intercepts it
+        //     "/wp-content": {
+        //       target: "https://nepas.org.np",
+        //       changeOrigin: true,
+        //       secure: false,
+        //     },
+        //   },
+        // },
       },
 
       workbox: {
