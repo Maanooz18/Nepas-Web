@@ -19,10 +19,10 @@ export const fetchGuidelinesApi = ({ finalCallback, successCallback }) => {
     });
 };
 
-const API_BASE_URL = "http://localhost:3001";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export async function getGuidelines() {
-  const response = await fetch(`${API_BASE_URL}/api/guidelines`);
+  const response = await fetch(`${API_URL}/guidelines`);
 
   if (!response.ok) {
     throw new Error("Failed to fetch guidelines");
