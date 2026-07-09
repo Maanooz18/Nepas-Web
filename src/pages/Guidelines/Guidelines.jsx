@@ -755,6 +755,7 @@
 //   margin-top: 12px;
 // }
 // `;
+
 import { useEffect, useState } from "react";
 import localforage from "localforage";
 import { getGuidelines } from "../../services/guidelines.services";
