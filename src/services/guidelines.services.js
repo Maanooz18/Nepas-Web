@@ -18,3 +18,15 @@ export const fetchGuidelinesApi = ({ finalCallback, successCallback }) => {
       finalCallback();
     });
 };
+
+const API_BASE_URL = "http://localhost:3001";
+
+export async function getGuidelines() {
+  const response = await fetch(`${API_BASE_URL}/api/guidelines`);
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch guidelines");
+  }
+
+  return response.json();
+}
