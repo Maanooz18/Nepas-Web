@@ -436,7 +436,7 @@ export default function PDFViewerScreen() {
   const [numPages, setNumPages] = useState(null);
   const [pdfSource, setPdfSource] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  cosnt[(loadingg, setLoadingg)] = useState(true);
   useEffect(() => {
     const loadPdf = async () => {
       if (!data?.pdfFile?.url) return;
