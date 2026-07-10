@@ -775,9 +775,38 @@ export default function GuidelinesScreen() {
     loadGuidelines();
   }, []);
 
+  // async function loadGuidelines() {
+  //   try {
+  //     const data = await getGuidelines();
+  //     setGuidelines(data);
+
+  //     const status = {};
+  //     for (const item of data) {
+  //       const audio = await localforage.getItem(`audio-${item.id}`);
+  //       const pdf = await localforage.getItem(`pdf-${item.id}`);
+  //       status[item.id] = !!audio && !!pdf;
+  //     }
+  //     setDownloaded(status);
+  //   } catch (error) {
+  //     console.error(error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // }
+
   async function loadGuidelines() {
     try {
-      const data = await getGuidelines();
+      let data = await getGuidelines();
+
+      // --- THE FIX: Force all URLs to be secure HTTPS immediately ---
+      data = data.map((item) => ({
+        ...item,
+        audioUrl: item.audioUrl
+          ? item.audioUrl.replace("http://", "https://")
+          : "",
+        pdfUrl: item.pdfUrl ? item.pdfUrl.replace("http://", "https://") : "",
+      }));
+
       setGuidelines(data);
 
       const status = {};
@@ -793,7 +822,6 @@ export default function GuidelinesScreen() {
       setLoading(false);
     }
   }
-
   // CORE LOGIC: Fetches and saves a single item
   async function fetchAndCacheItem(item) {
     const audioResponse = await fetch(item.audioUrl);
